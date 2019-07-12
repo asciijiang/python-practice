@@ -10,6 +10,7 @@ class IntField(Field):
 		self.min_value = min_value
 		self.max_value = max_value
 		
+		
 		if min_value is not None:
 			if not isinstance(min_value,numbers.Integral):
 				raise ValueError("min_value must be int")
@@ -115,7 +116,7 @@ if __name__ == "__main__":
 	
 	user2 = User(name="Michal",age=40)
 
-	#print(user.__dict__)
-	#print(user2.__dict__)
+	print(user.__dict__)
+	print(user2.__dict__)
 	user.save()
 	user2.save()

@@ -80,6 +80,8 @@ class ModelMetaClass(type):
 
 class BaseModel(metaclass=ModelMetaClass):
 	def __init__(self,*args,**kwargs):
+		for key,value in self.fields.items():
+			setattr(self,key,None)
 		for key,value in kwargs.items():
 			setattr(self,key,value)
 		super().__init__()
@@ -92,6 +94,8 @@ class BaseModel(metaclass=ModelMetaClass):
 				db_column = key.lower()
 			fields.append(db_column)
 			value = getattr(self,key)
+			if value is None:
+				raise ValueError("you must give value before save")
 			if isinstance(value,str):
 				value = "'"+value+"'"
 				values.append(value)

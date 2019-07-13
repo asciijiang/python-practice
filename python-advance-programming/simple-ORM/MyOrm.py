@@ -127,8 +127,8 @@ if __name__ == "__main__":
 	user5 = User(name="KJJJK",age=33)
 
 
-	#print(user.__dict__)
-	#print(user2.__dict__)
+	print(user.__dict__)
+	print(user2.__dict__)
 	user.save()
 	user2.save()
 	user3.save()

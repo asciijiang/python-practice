@@ -81,7 +81,7 @@ class ModelMetaClass(type):
 class BaseModel(metaclass=ModelMetaClass):
 	def __init__(self,*args,**kwargs):
 		for key,value in self.fields.items():
-			setattr(self,key,None)
+			self.__dict__[key] = None
 		for key,value in kwargs.items():
 			setattr(self,key,value)
 		super().__init__()

@@ -83,6 +83,8 @@ class BaseModel(metaclass=ModelMetaClass):
 		for key,value in self.fields.items():
 			self.__dict__[key] = None
 		for key,value in kwargs.items():
+			if key not in self.fields.keys():
+				raise ValueError("wrong database column name!!")
 			setattr(self,key,value)
 		super().__init__()
 	def save(self):
@@ -118,17 +120,20 @@ if __name__ == "__main__":
 	user.name = "jiangaaaa"
 	user.age = 10
 	
-	# user2 = User(name="Michalxxxx",age=40)
+	user2 = User(name="Michalxxxx",age=40)
 
-	# user3 = User(name="Durant",age=33)
+	user3 = User(name="Durant",age=33)
 
-	# user4 = User(name="KK",age=33)
+	user4 = User(name="KK",age=33)
 
-	# user5 = User(name="KJJJK",age=33)
+	user5 = User(name="KJJJK",age=33)
 
 
-	# print(user.__dict__)
-	# print(user2.__dict__)
+	print(user.__dict__)
+	print(user2.__dict__)
+	print(user3.__dict__)
+	print(user4.__dict__)
+	print(user5.__dict__)
 	user.save()
 	# user2.save()
 	# user3.save()

@@ -6,5 +6,10 @@ my_dict = {
 	"bobby2":"http://www.imooc.com",
 }
 
-for value in chain( my_list,my_dict,range(5,10) ):
+def my_chain(*args,**kwargs):
+	for my_iterable in args:
+		for value in my_iterable:
+			yield value
+
+for value in my_chain( my_list,my_dict,range(5,10) ):
 	print(value)

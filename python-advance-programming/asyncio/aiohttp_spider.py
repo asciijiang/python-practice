@@ -65,7 +65,7 @@ async def consumer(pool):
 			print("start get url:{}".format(url))
 			if re.match("http://.*?jobbole.com/\d+/",url):
 				if url not in seen_urls:
-					asyncio.ensure_future(article_handler(url,session,loop))
+					asyncio.ensure_future(article_handler(url,session,pool))
 					await asyncio.sleep(0.5)
 			else:
 				if url not in seen_urls:
